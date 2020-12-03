@@ -4,9 +4,9 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { FolderPageRoutingModule } from './folder-routing.module';
+import { FolderPageRoutingModule } from './search-routing.module';
 
-import { FolderPage } from './folder.page';
+import { SearchPage } from './search.page';
 
 @NgModule({
   imports: [
@@ -15,6 +15,6 @@ import { FolderPage } from './folder.page';
     IonicModule,
     FolderPageRoutingModule
   ],
-  declarations: [FolderPage]
+  declarations: [SearchPage]
 })
 export class FolderPageModule {}
