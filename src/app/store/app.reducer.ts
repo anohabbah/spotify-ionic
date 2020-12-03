@@ -1,18 +1,22 @@
 import {createReducer, on} from '@ngrx/store';
-import {accessTokenGranted, requestAccessToken} from './app.actions';
+import {accessTokenGrantedAction, requestAccessTokenAction, searchSuccessAction} from './app.actions';
+import {Albums} from '../album';
 
 export interface AppState {
     accessToken: string;
+    albums: Albums;
 }
 
 export const initialState: AppState = {
     accessToken: null,
+    albums: [],
 };
 
 // tslint:disable-next-line:variable-name
 const _appReducer = createReducer(
     initialState,
-    on(accessTokenGranted, (state, { accessToken }) => ({ ...state, accessToken }))
+    on(accessTokenGrantedAction, (state, { accessToken }) => ({ ...state, accessToken })),
+    on(searchSuccessAction, (state, { albums }) => ({ ...state, albums }))
 );
 
 export function appReducer(state, action) {

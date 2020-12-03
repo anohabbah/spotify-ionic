@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import {Store} from '@ngrx/store';
+import {searchAction} from '../store/app.actions';
+import {Observable} from 'rxjs';
+import {AppState} from '../store/app.reducer';
+import {Albums} from '../album';
 
 @Component({
   selector: 'app-folder',
@@ -6,7 +11,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./search.page.scss'],
 })
 export class SearchPage implements OnInit {
-  constructor() {}
+  searchTerm: string;
+  albums$: Observable<Albums>;
 
-  ngOnInit() {}
+  constructor(private store: Store<{ app: AppState }>) {}
+
+  ngOnInit() {
+    this.albums$ = this.store.select(state => state.app.albums);
+  }
+
+  search(searchTerm: string): void {
+    this.store.dispatch(searchAction({ query: searchTerm }));
+  }
 }

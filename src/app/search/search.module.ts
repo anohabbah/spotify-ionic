@@ -4,17 +4,21 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { FolderPageRoutingModule } from './search-routing.module';
+import { SearchPageRoutingModule } from './search-routing.module';
 
 import { SearchPage } from './search.page';
+import {FormatNamePipe} from '../format-name.pipe';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    FolderPageRoutingModule
+    SearchPageRoutingModule
   ],
-  declarations: [SearchPage]
+  exports: [
+    FormatNamePipe
+  ],
+  declarations: [SearchPage, FormatNamePipe]
 })
-export class FolderPageModule {}
+export class SearchPageModule {}

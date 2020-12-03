@@ -13,6 +13,8 @@ import { AppRoutingModule } from './app-routing.module';
 import {appReducer} from './store/app.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import {AppEffects} from './store/app.effects';
+import {FormsModule} from '@angular/forms';
+import { FormatNamePipe } from './format-name.pipe';
 
 @NgModule({
   declarations: [AppComponent],
@@ -21,14 +23,15 @@ import {AppEffects} from './store/app.effects';
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
-    StoreModule.forRoot({ app: appReducer }, {}),
     HttpClientModule,
+    FormsModule,
+    StoreModule.forRoot({app: appReducer}, {}),
     EffectsModule.forRoot([AppEffects]),
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    {provide: RouteReuseStrategy, useClass: IonicRouteStrategy}
   ],
   bootstrap: [AppComponent]
 })

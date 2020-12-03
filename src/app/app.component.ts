@@ -4,7 +4,7 @@ import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import {Store} from '@ngrx/store';
-import {requestAccessToken} from './store/app.actions';
+import {requestAccessTokenAction} from './store/app.actions';
 import {AppState} from './store/app.reducer';
 import {log} from 'util';
 
@@ -42,9 +42,7 @@ export class AppComponent implements OnInit {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
 
-      this.store.dispatch(requestAccessToken());
-
-      this.store.select(state => state).subscribe(app => console.log(app));
+      this.store.dispatch(requestAccessTokenAction());
     });
   }
 
