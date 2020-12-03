@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Store} from '@ngrx/store';
 import {AppState} from '../store/app.reducer';
 import {Observable, Subject} from 'rxjs';
@@ -6,18 +6,19 @@ import {Album, Albums, Library} from '../album.interface';
 import {map, takeUntil} from 'rxjs/operators';
 import values from 'lodash/values';
 import {favoritesUpdateAction} from '../store/app.actions';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-library',
   templateUrl: './library.page.html',
   styleUrls: ['./library.page.scss'],
 })
-export class LibraryPage implements OnInit {
+export class LibraryPage implements OnInit, OnDestroy {
   private unsubscribe = new Subject<void>();
   items$: Observable<Albums>;
   favorites: Library = {};
 
-  constructor(private store: Store<{ app: AppState}>) {}
+  constructor(private store: Store<{ app: AppState}>, private router: Router) {}
 
   ngOnInit() {
     this.items$ = this.store
@@ -36,5 +37,14 @@ export class LibraryPage implements OnInit {
 
   isFavored(albumId: string): boolean {
     return Boolean(this.favorites[albumId]);
+  }
+
+  goToSearchPage(): void {
+    this.router.navigate(['/']);
+  }
+
+  ngOnDestroy() {
+    this.unsubscribe.next();
+    this.unsubscribe.complete();
   }
 }
