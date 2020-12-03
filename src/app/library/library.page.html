@@ -24,7 +24,7 @@
 					<ion-item>
 						<ion-icon name="calendar-outline" slot="start"></ion-icon>
 						<ion-label>{{ album.release_date }} - date de sortie</ion-label>
-						<ion-button fill="clear" slot="end" (click)="toggleFavorite(album)" color="green">
+						<ion-button fill="clear" slot="end" (click)="toggleFavorite(album)" color="primary">
 							<ion-icon *ngIf="!isFavored(album.id)" slot="icon-only" name="heart-outline"></ion-icon>
 							<ion-icon *ngIf="isFavored(album.id)" slot="icon-only" name="heart"></ion-icon>
 						</ion-button>

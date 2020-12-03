@@ -26,10 +26,10 @@
         <h3>{{ album.name }}</h3>
         <p>{{ album.total_tracks }} morceaux - {{ album.release_date }}</p>
       </ion-label>
-      <div slot="end" (click)="toggle(album)">
-        <ion-icon *ngIf="!isBookmarked(album.id)" class="pointer" slot="icon-only" name="bookmark-outline"></ion-icon>
-        <ion-icon *ngIf="isBookmarked(album.id)" class="pointer" slot="icon-only" name="bookmark"></ion-icon>
-      </div>
+      <ion-button fill="clear" slot="end" (click)="toggle(album)" color="primary">
+        <ion-icon *ngIf="!isBookmarked(album.id)" slot="icon-only" name="bookmark-outline"></ion-icon>
+        <ion-icon *ngIf="isBookmarked(album.id)" slot="icon-only" name="bookmark"></ion-icon>
+      </ion-button>
     </ion-item>
   </ion-list>
 </ion-content>
