@@ -1,8 +1,10 @@
 import {createAction, props} from '@ngrx/store';
-import {Albums} from '../album';
+import {Album, Albums} from '../album.interface';
 
 export const requestAccessTokenAction = createAction('[SPOTIFY] requestAccessToken');
 export const accessTokenGrantedAction = createAction('[SPOTIFY] accessTokenGranted', props<{accessToken: string}>());
 
 export const searchAction = createAction('[SPOTIFY] search', props<{ query: string }>());
 export const searchSuccessAction = createAction('[SPOTIFY] search success', props<{ albums: Albums }>());
+
+export const bookmarkUpdateAction = createAction('[LIBRARY] bookmark update', props<{ payload: Album }>());

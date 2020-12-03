@@ -3,7 +3,7 @@ import {Store} from '@ngrx/store';
 import {searchAction} from '../store/app.actions';
 import {Observable} from 'rxjs';
 import {AppState} from '../store/app.reducer';
-import {Albums} from '../album';
+import {Albums} from '../album.interface';
 
 @Component({
   selector: 'app-folder',
