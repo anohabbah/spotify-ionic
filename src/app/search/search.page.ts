@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-folder',
@@ -7,12 +6,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./search.page.scss'],
 })
 export class SearchPage implements OnInit {
-  public folder: string;
+  constructor() {}
 
-  constructor(private activatedRoute: ActivatedRoute) { }
-
-  ngOnInit() {
-    this.folder = this.activatedRoute.snapshot.paramMap.get('id');
-  }
-
+  ngOnInit() {}
 }

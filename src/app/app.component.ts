@@ -14,13 +14,13 @@ export class AppComponent implements OnInit {
   public appPages = [
     {
       title: 'Rechercher',
-      url: '/folder/Inbox',
+      url: '/search',
       icon: 'search'
     },
     {
       title: 'Bibliothèque',
-      url: '/folder/Outbox',
-      icon: 'bookmark'
+      url: '/library',
+      icon: 'bookmarks'
     },
   ];
 
