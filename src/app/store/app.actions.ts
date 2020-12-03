@@ -8,3 +8,4 @@ export const searchAction = createAction('[SPOTIFY] search', props<{ query: stri
 export const searchSuccessAction = createAction('[SPOTIFY] search success', props<{ albums: Albums }>());
 
 export const bookmarkUpdateAction = createAction('[LIBRARY] bookmark update', props<{ payload: Album }>());
+export const favoritesUpdateAction = createAction('[FAVORITES] favoriteS update', props<{ payload: Album }>());
