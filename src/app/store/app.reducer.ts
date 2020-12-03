@@ -4,13 +4,13 @@ import set from 'lodash/set';
 import has from 'lodash/has';
 import {createReducer, on} from '@ngrx/store';
 
-import {accessTokenGrantedAction, bookmarkUpdateAction, requestAccessTokenAction, searchSuccessAction} from './app.actions';
-import {Album, Albums} from '../album.interface';
+import {accessTokenGrantedAction, bookmarkUpdateAction, searchSuccessAction} from './app.actions';
+import {Album, Albums, Library} from '../album.interface';
 
 export interface AppState {
     accessToken: string;
     albums: Albums;
-    library: { [key: string]: Album };
+    library: Library;
 }
 
 export const initialState: AppState = {

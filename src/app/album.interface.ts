@@ -9,3 +9,4 @@ export interface Album {
 
 export type Albums = Album[];
 
+export type Library = { [key: string]: Album };
