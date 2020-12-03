@@ -3,6 +3,10 @@ import { Component, OnInit } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
+import {Store} from '@ngrx/store';
+import {requestAccessToken} from './store/app.actions';
+import {AppState} from './store/app.reducer';
+import {log} from 'util';
 
 @Component({
   selector: 'app-root',
@@ -27,7 +31,8 @@ export class AppComponent implements OnInit {
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
-    private statusBar: StatusBar
+    private statusBar: StatusBar,
+    private store: Store<AppState>
   ) {
     this.initializeApp();
   }
@@ -36,6 +41,10 @@ export class AppComponent implements OnInit {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+
+      this.store.dispatch(requestAccessToken());
+
+      this.store.select(state => state).subscribe(app => console.log(app));
     });
   }
 
