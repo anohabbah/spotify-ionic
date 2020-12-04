@@ -16,41 +16,16 @@
 				size-lg="4"
 				*ngFor="let album of (items$ | async) as items"
 			>
-				<ion-card>
-					<img [src]="album.images[0].url" alt="" class="w-100"/>
-
-					<ion-card-header>
-						<ion-card-subtitle>{{ album.artists[0].name }}</ion-card-subtitle>
-						<ion-card-title>{{ album.name }}</ion-card-title>
-					</ion-card-header>
-
-					<ion-item class="ion-activated">
-						<ion-icon name="musical-notes-outline" slot="start"></ion-icon>
-						<ion-label>{{ album.total_tracks }} morceaux</ion-label>
-					</ion-item>
-
-					<ion-item>
-						<ion-icon name="calendar-outline" slot="start"></ion-icon>
-						<ion-label>{{ album.release_date }} - date de sortie</ion-label>
-						<ion-button fill="clear" slot="end" (click)="toggleFavorite(album)" color="primary">
-							<ion-icon *ngIf="!isFavored(album.id)" slot="icon-only" name="heart-outline"></ion-icon>
-							<ion-icon *ngIf="isFavored(album.id)" slot="icon-only" name="heart"></ion-icon>
-						</ion-button>
-					</ion-item>
-				</ion-card>
+				<app-library-item
+					[item]="album"
+					(toggled)="toggleFavorite($event)"
+					[isFavored]="isFavored(album.id)"
+				></app-library-item>
 			</ion-col>
 		</ion-row>
 
 		<ng-template #placeholder>
-			<ion-card>
-				<ion-card-content class="ion-text-center ion-padding-vertical">
-					<ion-icon name="folder-open-outline" size="large"></ion-icon>
-					<p class="ion-padding-vertical ion-no-margin">
-						Votre bibliothèque est vide pour le moment.
-					</p>
-					<ion-button href="/" router-direction="root">Ajouter un album</ion-button>
-				</ion-card-content>
-			</ion-card>
+			<app-library-empty-placeholder></app-library-empty-placeholder>
 		</ng-template>
 	</ion-grid>
 

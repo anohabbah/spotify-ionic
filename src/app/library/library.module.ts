@@ -7,6 +7,8 @@ import { IonicModule } from '@ionic/angular';
 import { LibraryPageRoutingModule } from './library-routing.module';
 
 import { LibraryPage } from './library.page';
+import {LibraryEmptyPlaceholderComponent} from './components/library-empty-placeholder.component';
+import {LibraryItemComponent} from './components/library-item.component';
 
 @NgModule({
   imports: [
@@ -15,6 +17,6 @@ import { LibraryPage } from './library.page';
     IonicModule,
     LibraryPageRoutingModule
   ],
-  declarations: [LibraryPage]
+  declarations: [LibraryPage, LibraryEmptyPlaceholderComponent, LibraryItemComponent]
 })
 export class LibraryPageModule {}
