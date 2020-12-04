@@ -13,14 +13,17 @@ import {takeUntil} from 'rxjs/operators';
 })
 export class SearchPage implements OnInit, OnDestroy {
   searchTerm: string;
-  albums$: Observable<Albums>;
+  albums: Albums;
   private unsubscribe = new Subject<void>();
   library: Library = {};
 
   constructor(private store: Store<{ app: AppState }>) {}
 
   ngOnInit() {
-    this.albums$ = this.store.select(state => state.app.albums);
+    this.store.select(state => state.app.albums)
+        .pipe(takeUntil(this.unsubscribe))
+        .subscribe((albums: Albums) => this.albums = albums);
+
     this.store
         .select(state => state.app.library)
         .pipe(

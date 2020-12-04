@@ -16,20 +16,31 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-list>
-    <ion-item *ngFor="let album of (albums$ | async)">
-      <ion-avatar slot="start">
-        <img [src]="album.images[2].url" alt="">
-      </ion-avatar>
-      <ion-label>
-        <h2>{{ album.artists | formatName }}</h2>
-        <h3>{{ album.name }}</h3>
-        <p>{{ album.total_tracks }} morceaux - {{ album.release_date }}</p>
-      </ion-label>
-      <ion-button fill="clear" slot="end" (click)="toggle(album)" color="primary">
-        <ion-icon *ngIf="!isBookmarked(album.id)" slot="icon-only" name="bookmark-outline"></ion-icon>
-        <ion-icon *ngIf="isBookmarked(album.id)" slot="icon-only" name="bookmark"></ion-icon>
-      </ion-button>
-    </ion-item>
-  </ion-list>
+
+  <ion-card>
+    <ion-card-content>
+      <ion-list *ngIf="albums.length">
+        <ion-item *ngFor="let album of albums">
+          <ion-avatar slot="start">
+            <img [src]="album.images[2].url" alt="">
+          </ion-avatar>
+          <ion-label>
+            <h2>{{ album.artists | formatName }}</h2>
+            <h3>{{ album.name }}</h3>
+            <p>{{ album.total_tracks }} morceaux - {{ album.release_date }}</p>
+          </ion-label>
+          <ion-button fill="clear" slot="end" (click)="toggle(album)" color="primary">
+            <ion-icon *ngIf="!isBookmarked(album.id)" slot="icon-only" name="bookmark-outline"></ion-icon>
+            <ion-icon *ngIf="isBookmarked(album.id)" slot="icon-only" name="bookmark"></ion-icon>
+          </ion-button>
+        </ion-item>
+      </ion-list>
+      <ion-row *ngIf="!albums.length">
+        <ion-col class="ion-padding ion-text-center">
+          <img style="width: 100px; height: auto" src="/assets/search.png" alt="search-png"/>
+          <p class="ion-padding-top">Commencer à faire votre recherche, le résultat s'affichera ici.</p>
+        </ion-col>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
