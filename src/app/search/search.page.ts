@@ -36,7 +36,7 @@ export class SearchPage implements OnInit, OnDestroy {
     this.store.dispatch(searchAction({ query: searchTerm }));
   }
 
-  toggle(album: Album): void {
+  onToggled(album: Album): void {
     this.store.dispatch(bookmarkUpdateAction({ payload: album }));
   }
 

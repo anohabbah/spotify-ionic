@@ -8,6 +8,8 @@ import { SearchPageRoutingModule } from './search-routing.module';
 
 import { SearchPage } from './search.page';
 import {FormatNamePipe} from '../format-name.pipe';
+import {SearchResultItemComponent} from './components/search-result-item/search-result-item.component';
+import {SearchEmptyPlaceholderComponent} from './components/search-empty-placeholder.component';
 
 @NgModule({
   imports: [
@@ -19,6 +21,6 @@ import {FormatNamePipe} from '../format-name.pipe';
   exports: [
     FormatNamePipe
   ],
-  declarations: [SearchPage, FormatNamePipe]
+  declarations: [SearchPage, FormatNamePipe, SearchResultItemComponent, SearchEmptyPlaceholderComponent]
 })
 export class SearchPageModule {}

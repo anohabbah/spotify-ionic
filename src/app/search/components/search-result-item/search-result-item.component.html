@@ -1,0 +1,14 @@
+<ion-item>
+  <ion-avatar slot="start">
+    <img [src]="item.images[2].url" alt="">
+  </ion-avatar>
+  <ion-label>
+    <h2>{{ item.artists | formatName }}</h2>
+    <h3>{{ item.name }}</h3>
+    <p>{{ item.total_tracks }} morceaux - {{ item.release_date }}</p>
+  </ion-label>
+  <ion-button fill="clear" slot="end" (click)="toggle(item)" color="primary">
+    <ion-icon *ngIf="!isBookmarked" slot="icon-only" name="bookmark-outline"></ion-icon>
+    <ion-icon *ngIf="isBookmarked" slot="icon-only" name="bookmark"></ion-icon>
+  </ion-button>
+</ion-item>
